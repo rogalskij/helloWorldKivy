@@ -1,17 +1,23 @@
+from DataModel.skill import Skill
+
+
 class Hero:
 
     '''mental'''
-    strength = 0
-    defence = 0
-    perception = 0
-    agility = 0
+    strength = Skill()
+    defence = Skill()
+    perception = Skill()
+    agility = Skill()
 
-    power = 0
-    reanimate = 0
-    voodoo = 0
-    love = 0
+    power = Skill()
+    reanimate = Skill()
+    voodoo = Skill()
+    love = Skill()
 
     learning = 0
+
+    def __init__(self):
+        return
 
     def train(self):
         return
