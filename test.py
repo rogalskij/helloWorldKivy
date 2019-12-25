@@ -1,13 +1,14 @@
 import unittest
 
 from DataModel.skill import Skill
+from DataModel.hero import Hero
 
 
 class TestSkill(unittest.TestCase):
 
     def test_skill_int(self):
         """
-        Test that it can sum a list of integers
+
         """
         s0 = Skill(0)
         s3 = Skill(3)
@@ -22,7 +23,7 @@ class TestSkill(unittest.TestCase):
 
     def test_skill_train(self):
         """
-        Test that it can sum a list of integers
+
         """
         s0 = Skill(0)
         s3 = Skill(3)
@@ -35,6 +36,19 @@ class TestSkill(unittest.TestCase):
         self.assertEqual(s0.return_lvl(), 0)
         self.assertEqual(s3.return_lvl(), 1)
 
+    def test_hero_define(self):
+
+        value = 100
+        learning = 5
+
+        hero0 = Hero(value, learning)
+        sum = 0
+
+        for x in hero0.skills:
+            sum += x.value
+
+        self.assertEqual(sum, value)
+        self.assertEqual(hero0.learning, learning)
 
 
 

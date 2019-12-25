@@ -6,11 +6,7 @@ class Skill:
     value = 0
     current_lvl = 0
 
-    def __init__(self):
-        self.current_lvl = self.return_lvl()
-        return
-
-    def __init__(self, value):
+    def __init__(self, value=0):
         self.value = value
         self.current_lvl = self.return_lvl()
 
