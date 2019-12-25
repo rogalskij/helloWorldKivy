@@ -3,6 +3,8 @@ import random
 
 
 class Hero:
+
+    name = ""
     '''mental'''
     strength = Skill()
     defence = Skill()
@@ -18,7 +20,8 @@ class Hero:
 
     learning = 0
 
-    def __init__(self, max=0, learning=0):
+    def __init__(self, max=0, learning=0, name="Richard Grey"):
+        self.name = name
         self.train(max)
         self.learning = learning
         return

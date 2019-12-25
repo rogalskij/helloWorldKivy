@@ -1,5 +1,40 @@
 from kivy.app import App
 from kivy.lang import Builder
+from DataModel.hero import Hero
+
+h = Hero(100, 5)
+
+h_kv_string = '''
+BoxLayout:
+    orientation: 'vertical'
+    Label: 
+        text: 'Nazwisko'
+    BoxLayout:
+        height: sp(100)
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Label: 
+                text: 'siła: str'
+            Label: 
+                text: 'obrona: str'        
+            Label: 
+                text: 'percepcja: str'
+            Label: 
+                text: 'zwinnosc: str'        
+        BoxLayout:
+            orientation: 'vertical'
+            Label: 
+                text: 'moc: str'
+            Label: 
+                text: 'healing: srt'        
+            Label: 
+                text: 'voodoo: str'
+            Label: 
+                text: 'dekoncentracja: str'        
+    Button: 
+        text: 'train'
+'''
 
 kv = ''' 
 BoxLayout:
@@ -66,7 +101,7 @@ BoxLayout:
 
 class CircleApp(App):
     def build(self):
-        return Builder.load_string(kv)
+        return Builder.load_string(h_kv_string)
 
 
 CircleApp().run()
