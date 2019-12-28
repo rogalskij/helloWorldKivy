@@ -1,107 +1,42 @@
 from kivy.app import App
 from kivy.lang import Builder
 from DataModel.hero import Hero
+from kivy.uix.boxlayout import BoxLayout
 
-h = Hero(100, 5)
 
-h_kv_string = '''
-BoxLayout:
-    orientation: 'vertical'
-    Label: 
-        text: 'Nazwisko'
-    BoxLayout:
-        height: sp(100)
-        orientation: 'horizontal'
-        BoxLayout:
-            orientation: 'vertical'
-            Label: 
-                text: 'siła: str'
-            Label: 
-                text: 'obrona: str'        
-            Label: 
-                text: 'percepcja: str'
-            Label: 
-                text: 'zwinnosc: str'        
-        BoxLayout:
-            orientation: 'vertical'
-            Label: 
-                text: 'moc: str'
-            Label: 
-                text: 'healing: srt'        
-            Label: 
-                text: 'voodoo: str'
-            Label: 
-                text: 'dekoncentracja: str'        
-    Button: 
-        text: 'train'
-'''
+class RootWidget(BoxLayout):
+    h = Hero()
 
-kv = ''' 
-BoxLayout:
-    orientation: 'vertical'
-    BoxLayout:
-        size_hint_y: None
-        height: sp(100)
-        BoxLayout:
-            orientation: 'vertical'
-            Slider:
-                id: e1
-                min: -360.
-                max: 360.
-            Label:
-                text: 'angle_start = {}'.format(e1.value)
-        BoxLayout:
-            orientation: 'vertical'
-            Slider:
-                id: e2
-                min: -360.
-                max: 360.
-                value: 360
-            Label:
-                text: 'angle_end = {}'.format(e2.value)
+    def setHero(self, hero):
+        self.h = hero
 
-    BoxLayout:
-        size_hint_y: None
-        height: sp(100)
-        BoxLayout:
-            orientation: 'vertical'
-            Slider:
-                id: wm
-                min: 0
-                max: 2
-                value: 1
-            Label:
-                text: 'Width mult. = {}'.format(wm.value)
-        BoxLayout:
-            orientation: 'vertical'
-            Slider:
-                id: hm
-                min: 0
-                max: 2
-                value: 1
-            Label:
-                text: 'Height mult. = {}'.format(hm.value)
-        Button:
-            text: 'Reset ratios'
-            on_press: wm.value = 1; hm.value = 1
+    def pressed(self):
+        self.h.train(20)
+        self.update_labels()
 
-    FloatLayout:
-        canvas:
-            Color:
-                rgb: 1, 250, 111
-            Ellipse:
-                pos: 100, 100
-                size: 200 * wm.value, 201 * hm.value
-                source: 'data/logo/kivy-icon-512.png'
-                angle_start: e1.value
-                angle_end: e2.value
+    def update_labels(self):
 
-'''
+        self.lbl_strenght.text = "Siła: " +  str(self.h.skills[0].value)
+        self.lbl_defence.text = "Obrona: " +  str(self.h.skills[1].value)
+        self.lbl_perception.text = "Percepcja: " +  str(self.h.skills[2].value)
+        self.lbl_agility.text = "Zwinność: " +  str(self.h.skills[3].value)
+        self.lbl_power.text = "Moc: " +  str(self.h.skills[4].value)
+        self.lbl_healing.text = "Uzdrawianie: " +  str(self.h.skills[5].value)
+        self.lbl_voodoo.text = "Voodoo: " +  str(self.h.skills[6].value)
+        self.lbl_deconcentration.text = "Dekoncentracja: " +  str(self.h.skills[7].value)
 
 
 class CircleApp(App):
+    h = Hero(100, 5)
+    index = 0
+
+
     def build(self):
-        return Builder.load_string(h_kv_string)
+       ### Builder.load_string(h_kv_string)
+        r = RootWidget()
+        r.setHero(self.h)
+        return r
+
 
 
 CircleApp().run()

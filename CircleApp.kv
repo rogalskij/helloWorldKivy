@@ -1,0 +1,47 @@
+<RootWidget>:
+    orientation: 'vertical'
+    lbl_strenght:strenght
+    lbl_defence:defence
+    lbl_perception: perception
+    lbl_agility: agility
+    lbl_power: power
+    lbl_healing: healing
+    lbl_voodoo: voodoo
+    lbl_deconcentration: deconcentration
+
+    Label:
+        text: 'Nazwisko'
+    BoxLayout:
+        height: sp(100)
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                id: strenght
+                text: 'siła: str'
+            Label:
+                id: defence
+                text: 'obrona: str'
+            Label:
+                id: perception
+                text: 'percepcja: str'
+            Label:
+                id: agility
+                text: 'zwinnosc: str'
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                id: power
+                text: 'moc: str'
+            Label:
+                id: healing
+                text: 'healing: srt'
+            Label:
+                id: voodoo
+                text: 'voodoo: str'
+            Label:
+                id: deconcentration
+                text: 'dekoncentracja: str'
+    Button:
+        text: 'train'
+        on_press: root.pressed()

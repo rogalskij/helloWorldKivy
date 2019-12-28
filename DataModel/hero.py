@@ -26,14 +26,16 @@ class Hero:
         self.learning = learning
         return
 
-
     def train(self, max):
-
         i = 0
-        while i < 8:
-            gen = random.randint(0, max)
-            self.skills[i].train(gen)
-            max -= gen
+        train = [0, 0, 0, 0, 0, 0, 0, 0]
+        while i < max:
+            train[random.randint(0, 7)] += 1
             i += 1
+
+        index = 0
+        while index < 8:
+            self.skills[index].train(train[index])
+            index += 1
 
         return
